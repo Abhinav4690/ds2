@@ -1,0 +1,146 @@
+1)
+    import java.util.*;
+     
+    class Palindrome
+    {
+       public static void main(String args[])
+       {
+          String original, reverse = ""; 
+          Scanner in = new Scanner(System.in);
+         
+          System.out.println("Enter a string to check if it is a palindrome");
+          original = in.nextLine();
+         
+          int length = original.length();
+         
+          for (int i = length - 1; i >= 0; i--)
+             reverse = reverse + original.charAt(i);
+             
+          if (original.equals(reverse))
+             System.out.println("The string is a palindrome.");
+          else
+             System.out.println("The string isn't a palindrome.");
+             
+       }
+    }      
+************************************************************************
+2)
+import java.util.*;
+public class UpperLower2
+{
+
+    public static void main(String[] args)
+    {
+        System.out.println("Enter in a sentence:"); 
+        Scanner input = new Scanner(System.in); 
+        String sentence = input.nextLine();
+
+
+        System.out.println("All uppercase:" + sentence.toUpperCase());
+        System.out.println("All lowercase:" + sentence.toLowerCase()); 
+        System.out.println("Converted String:" + toggleString(sentence)); 
+        input.close(); 
+     }
+
+    public static String toggleString(String sentence)
+    {
+       String toggled = ""; 
+       for(int i=0; i<sentence.length(); i++)
+       {
+
+
+           char letter = sentence.charAt(i); 
+
+           if(Character.isUpperCase(sentence.charAt(i)))
+           {
+                letter = Character.toLowerCase(letter); 
+                toggled = toggled + letter; 
+
+           }
+}
+
+       }
+       return toggled; 
+
+   }
+
+***************************************************************************************************************************************************
+3)
+public class GFG  
+{ 
+    static final int ASCII_SIZE = 256; 
+    static char getMaxOccuringChar(String str) 
+    { 
+        // Create array to keep the count of individual 
+        // characters and initialize the array as 0 
+        int count[] = new int[ASCII_SIZE]; 
+       
+        // Construct character count array from the input 
+        // string. 
+        int len = str.length(); 
+        for (int i=0; i<len; i++) 
+            count[str.charAt(i)]++; 
+       
+        int max = -1; 
+        char result = ' ';   
+    
+        for (int i = 0; i < len; i++) { 
+            if (max < count[str.charAt(i)]) { 
+                max = count[str.charAt(i)]; 
+                result = str.charAt(i); 
+            } 
+        } 
+       
+        return result; 
+    } 
+      
+  
+    public static void main(String[] args) 
+    { 
+        String str = "sample string"; 
+        System.out.println("Max occurring character is " + 
+                            getMaxOccuringChar(str)); 
+    } 
+} 
+*********************************************************************************************************************
+4)
+import java.util.HashSet; 
+  
+public class Subsequence { 
+      
+    static HashSet<String> st = new HashSet<>(); 
+  
+   
+    static void subsequence(String str) 
+    { 
+        
+        for (int i = 0; i < str.length(); i++) { 
+              
+            // iterate from the end of the string 
+            // to generate substrings 
+            for (int j = str.length(); j > i; j--) { 
+                String sub_str = str.substring(i, j); 
+              
+                if (!st.contains(sub_str)) 
+                    st.add(sub_str); 
+   
+                for (int k = 1; k < sub_str.length() - 1; k++) { 
+                    StringBuffer sb = new StringBuffer(sub_str); 
+  
+                   
+                    sb.deleteCharAt(k); 
+                    if (!st.contains(sb)); 
+                    subsequence(sb.toString()); 
+                } 
+            } 
+        } 
+    } 
+  
+    
+    public static void main(String[] args) 
+    { 
+        String s = "aabc"; 
+        subsequence(s); 
+        System.out.println(st); 
+    } 
+} 
